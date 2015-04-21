@@ -1,0 +1,71 @@
+<button class="btn btn-default glyphicon glyphicon-refresh"
+	ng-click="getCars()">
+	<br> Refresh
+</button>
+<button id="btnAdd" type="button"
+	class="btn btn-default glyphicon glyphicon-plus"
+	ng-click="createCar()">
+	<br> Add car
+</button>
+
+<!--div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add car</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="labelModel">Model:</label>
+                        <input type="text" class="form-control" id="inputModel" ng-model="selectedModel" placeholder="Enter model" required>
+                        <label for="labelModel">Brand:</label>
+                        <select class="form-control" ng-model="selectedBrand.brand" ng-options="b.brand.id as b.brand.name for b in brands" required>
+                        </select>
+                        <p>Selected element: <b>{{selectedBrand.brand}}</b></p>
+                        <label for="labelModel">Price:</label>
+                        <select class="form-control" ng-model="selectedPrice.price" ng-options="p.price.id as p.price.price for p in prices" required>
+                        </select>
+                        <p>Selected element: <b>{{selectedPrice.price}}</b></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Close</button>
+                        <button type="button" class="btn btn-primary" ng-click="saveCar()">Save car</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div-->
+
+<h2>List of cars:</h2>
+<p>
+	Selected element: <b>{{selected.model}}</b>
+</p>
+<p>
+	Filter: <input type="text" ng-model="carfilter" />
+</p>
+<div class="table table-bordered">
+	<table class="table table-striped">
+		<tr>
+			<th>Id</th>
+			<th>Model</th>
+			<th>Brand Id</th>
+			<th>Price Id</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+		<tr ng-repeat="c in cars | filter:carfilter"
+			ng-click="showSelectedElement(c)">
+			<td>{{c.id}}</td>
+			<td>{{c.model}}</td>
+			<td>{{c.brandId}}</td>
+			<td>{{c.priceId}}</td>
+			<td><a ng-click="editCar(c.id)"
+				class="btn btn-small btn-primary">edit</a></td>
+			<td><a ng-click="deleteCar(c.id)"
+				class="btn btn-small btn-danger">delete</a></td>
+		</tr>
+	</table>
+</div>

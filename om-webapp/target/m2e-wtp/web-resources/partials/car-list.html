@@ -1,0 +1,41 @@
+<button class="btn btn-default glyphicon glyphicon-refresh"
+	ng-click="reloadPage()">
+	<br> Refresh
+</button>
+<button id="btnAdd" type="button"
+	class="btn btn-default glyphicon glyphicon-plus"
+	ng-click="createNewCar()">
+	<br> Add car
+</button>
+
+<h2>List of cars:</h2>
+<p>
+	Selected element: <b>Id: {{selected.id }} | Model: {{selected.model}}</b>
+	Show index: <b>{{index}}</b>
+</p>
+<p>
+	Filter: <input type="text" ng-model="carfilter" />
+</p>
+<div class="table table-bordered">
+	<table class="table table-striped">
+		<tr>
+			<th>Id</th>
+			<th>Model</th>
+			<th>Brand Id</th>
+			<th>Price Id</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+		<tr ng-repeat="c in cars | filter:carfilter"
+			ng-click="showSelectedElement(c)">
+			<td>{{c.id}}</td>
+			<td>{{c.model}}</td>
+			<td>{{c.brandId}}</td>
+			<td>{{c.priceId}}</td>
+			<td><a ng-click="updateExistingCar($index)"
+				class="btn btn-small btn-primary">edit</a></td>
+			<td><a ng-click="deleteCar(c.id, $index)"
+				class="btn btn-small btn-danger">delete</a></td>
+		</tr>
+	</table>
+</div>

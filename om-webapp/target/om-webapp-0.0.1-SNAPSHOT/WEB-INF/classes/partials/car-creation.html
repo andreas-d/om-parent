@@ -1,0 +1,30 @@
+<div class="container">
+	<h1>Car Creation</h1>
+
+	<form novalidate="novalidate" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="labelModel">Model:</label>
+			<div class="controls">
+				<input type="text" id="inputModel" ng-model="car.model" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="labelBrand">Brand:</label>
+			<div class="controls">
+				<input type="text" id="inputBrand" ng-model="car.brand_id" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="labelPrice">Price:</label>
+			<div class="controls">
+				<input type="text" id="inputPrice" ng-model="car.price_id" />
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<a ng-click="createCar()" class="btn btn-small btn-primary">create
+					new car</a>
+			</div>
+		</div>
+	</form>
+</div>

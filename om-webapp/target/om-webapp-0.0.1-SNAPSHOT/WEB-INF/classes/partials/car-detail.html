@@ -1,0 +1,31 @@
+<div class="container">
+	<h1>Car Detail</h1>
+
+	<form novalidate="novalidate" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="labelModel">Model:</label>
+			<div class="controls">
+				<input type="text" id="inputModel" ng-model="car.car.model">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="labelBrand">Brand:</label>
+			<div class="controls">
+				<input type="text" id="inputBrand" ng-model="car.car.brand_id" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="labelPrice">Price:</label>
+			<div class="controls">
+				<input type="text" id="inputPrice" ng-model="car.car.price_id" />
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<a ng-click="cancel()" class="btn btn-small">cancel</a> <a
+					ng-click="updateCar()" class="btn btn-small btn-primary">update
+					car</a>
+			</div>
+		</div>
+	</form>
+</div>
