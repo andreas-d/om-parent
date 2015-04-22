@@ -12,6 +12,6 @@
         </dependent-module>
         <property name="context-root" value="om-webapp"/>
         <property name="java-output-path" value="/om-webapp/target/classes"/>
-        <property name="component.exclusion.patterns" value="D:\workspace\om-parent\om-webapp/src/main/webapp/WEB-INF/lib/*.jar"/>
+        <property name="component.exclusion.patterns" value="U:\git\om-parent\om-webapp/src/main/webapp/WEB-INF/lib/*.jar"/>
     </wb-module>
 </project-modules>

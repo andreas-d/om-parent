@@ -37,7 +37,7 @@ public class PriceEntity extends AbstractEntity {
 	}
 
 	public void fromDTO(PriceDTO dTO, boolean isUpdate) {
-		if (!isUpdate) {
+		if (isUpdate) {
 			setId(dTO.getId());
 		}
 

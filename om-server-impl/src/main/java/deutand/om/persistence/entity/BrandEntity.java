@@ -37,7 +37,7 @@ public class BrandEntity extends AbstractEntity {
 	}
 
 	public void fromDTO(BrandDTO dTO, boolean isUpdate) {
-		if (!isUpdate) {
+		if (isUpdate) {
 			setId(dTO.getId());
 		}
 

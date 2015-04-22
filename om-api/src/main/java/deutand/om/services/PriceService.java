@@ -16,9 +16,9 @@ import deutand.om.data.PriceDTO;
 public interface PriceService {
 
 	@GET
-	@Path("/allpricesforcar/{carid}")
+	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON)
-	List<PriceDTO> getAllPricesForCar(@PathParam("carid") Long carId);
+	List<PriceDTO> getAllPrices();
 
 	@GET
 	@Path("/{id}")

@@ -1,14 +1,14 @@
 'use strict';
 
 console.log('init cars');
+
 angular.module('carApp').controller(
 		'CarListCtrl',
-		function($scope, $log, $route, $location, dataFactory) {
+		function($scope, $log, $route, $location, dataFactory, sharedProperties) {
 			console.log('init CarCtrl');
 
 			$scope.car = null;
 			$scope.cars = [];
-			$scope.index = 0;
 
 			// navigation
 			$scope.reloadPage = function() {
@@ -20,18 +20,16 @@ angular.module('carApp').controller(
 			};
 
 			$scope.updateExistingCar = function($index) {
-				console.log($index);
-				$scope.index = $index;
-				console.log($scope.index);
+				sharedProperties.setIndex($index+1);
 				$location.path('/car-detail');
 			};
 			
 			$scope.listCars = function() {
-				$location.path('car-list');
+				$location.path('/car-list');
 			}
 
 			$scope.showSelectedElement = function(c) {
-				$scope.selected = c;
+				$scope.index = c.id;
 			};
 
 			// add car
@@ -63,14 +61,14 @@ angular.module('carApp').controller(
 			}
 
 			// edit car
-			$scope.editCar = function() {
-				console.log($scope.index);
-				var car = $scope.cars[$scope.index];
-				car.model = $scope.car.model;
-				car.brandId = $scope.car.brandId;
-				car.priceId = $scope.car.priceId;
-				console.log(car);
-				$scope.updateCar(car);
+			$scope.editCar = function(car) {
+				var newCar = {
+						id : sharedProperties.getIndex(),
+						model : car.model,
+						brandId : car.brandId,
+						priceId : car.priceId
+					};
+				$scope.updateCar(newCar);
 				$scope.listCars();
 			}
 

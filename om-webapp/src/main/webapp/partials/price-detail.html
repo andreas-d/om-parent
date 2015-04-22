@@ -1,0 +1,18 @@
+<div class="container">
+	<h1>Price Detail</h1>
+	<form novalidate="novalidate" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="labelPrice">Price:</label>
+			<div class="controls">
+				<input type="text" id="inputPrice" ng-model="price.price" />
+			</div>
+		</div>
+		<div class="control-group" style="margin: 20px 0 0 0;">
+			<div class="controls">
+				<a ng-click="listPrices()" class="btn btn-small btn-primary">Cancel</a>
+				<a ng-click="editPrice(price)" class="btn btn-small btn-primary">update
+					price</a>
+			</div>
+		</div>
+	</form>
+</div>

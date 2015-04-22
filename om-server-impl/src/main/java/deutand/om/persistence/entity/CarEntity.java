@@ -47,7 +47,7 @@ public class CarEntity extends AbstractEntity {
 	}
 
 	public void fromDTO(CarDTO dTO, BrandEntity brand, PriceEntity price, boolean isUpdate) {
-		if (!isUpdate) {
+		if (isUpdate) {
 			setId(dTO.getId());
 		}
 		if (brand != null) {

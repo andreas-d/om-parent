@@ -1,0 +1,18 @@
+<div class="container">
+	<h1>Brand Creation</h1>
+	<form novalidate="novalidate" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="labelName">Name:</label>
+			<div class="controls">
+				<input type="text" id="inputName" ng-model="brand.name" />
+			</div>
+		</div>
+		<div class="control-group" style="margin: 20px 0 0 0 ;">
+			<div class="controls">
+				<a ng-click="listBrands()" class="btn btn-small btn-primary">Cancel</a>
+				<a ng-click="addBrand()" class="btn btn-small btn-primary">Create
+					new brand</a> 
+			</div>
+		</div>
+	</form>
+</div>

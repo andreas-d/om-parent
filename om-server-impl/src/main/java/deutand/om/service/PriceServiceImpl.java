@@ -2,20 +2,25 @@ package deutand.om.service;
 
 import java.util.List;
 
+import javax.ws.rs.Path;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import deutand.om.data.PriceDTO;
 import deutand.om.persistence.repositories.PriceRepository;
 import deutand.om.services.PriceService;
 
+@Path("/price")
+@Service
 public class PriceServiceImpl implements PriceService {
 
 	@Autowired
 	private PriceRepository priceReporitory;
 
 	@Override
-	public List<PriceDTO> getAllPricesForCar(Long carId) {
-		return priceReporitory.getAllPriceDTOsForCar(carId);
+	public List<PriceDTO> getAllPrices() {
+		return priceReporitory.getAllPriceDTOs();
 	}
 
 	@Override

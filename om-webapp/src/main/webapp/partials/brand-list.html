@@ -4,36 +4,32 @@
 </button>
 <button id="btnAdd" type="button"
 	class="btn btn-default glyphicon glyphicon-plus"
-	ng-click="createNewCar()">
-	<br> Add car
+	ng-click="createNewBrand()">
+	<br> Add brand
 </button>
 
-<h2>List of cars:</h2>
+<h2>List of brands:</h2>
 <p>
 	Show index: <b>{{index}}</b>
 </p>
 <p>
-	Filter: <input type="text" ng-model="carfilter" />
+	Filter: <input type="text" ng-model="brandfilter" />
 </p>
 <div class="table table-bordered">
 	<table class="table table-striped">
 		<tr>
 			<th>Id</th>
-			<th>Model</th>
-			<th>Brand Id</th>
-			<th>Price Id</th>
+			<th>Name</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
-		<tr ng-repeat="c in cars | filter:carfilter"
-			ng-click="showSelectedElement(c)">
-			<td>{{c.id}}</td>
-			<td>{{c.model}}</td>
-			<td>{{c.brandId}}</td>
-			<td>{{c.priceId}}</td>
-			<td><a ng-click="updateExistingCar($index)"
+		<tr ng-repeat="b in brands | filter:brandfilter"
+			ng-click="showSelectedElement(b)">
+			<td>{{b.id}}</td>
+			<td>{{b.name}}</td>
+			<td><a ng-click="updateExistingBrand($index)"
 				class="btn btn-small btn-primary">edit</a></td>
-			<td><a ng-click="deleteCar(c.id, $index)"
+			<td><a ng-click="deleteBrand(b.id, $index)"
 				class="btn btn-small btn-danger">delete</a></td>
 		</tr>
 	</table>

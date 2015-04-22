@@ -16,9 +16,9 @@ import deutand.om.data.BrandDTO;
 public interface BrandService {
 	
 	@GET
-	@Path("/allbrandsforcar/{carid}")
+	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON)
-	List<BrandDTO> getAllBrandsForCar(@PathParam("carid") Long carId);
+	List<BrandDTO> getAllBrands();
 
 	@GET
 	@Path("/{id}")
