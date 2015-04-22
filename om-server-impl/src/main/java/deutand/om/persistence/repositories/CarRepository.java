@@ -58,9 +58,9 @@ public class CarRepository extends AbstractRepository {
 	@Transactional(readOnly = false)
 	public CarDTO createCar(CarDTO car) {
 		BrandEntity brand = (BrandEntity) getSession().get(BrandEntity.class,
-				car.getBrandId());
+				car.getBrandDTO().getId());
 		PriceEntity price = (PriceEntity) getSession().get(PriceEntity.class,
-				car.getPriceId());
+				car.getPriceDTO().getId());
 		CarEntity entity = new CarEntity(car, brand, price);
 		saveCar(entity);
 

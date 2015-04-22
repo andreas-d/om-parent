@@ -1,6 +1,8 @@
 <div class="container">
 	<h1>Car Creation</h1>
-	<p>Show index: <b>{{index}}</b></p>
+	<p>
+		Show index: <b>{{index}}</b>
+	</p>
 	<form novalidate="novalidate" class="form-horizontal">
 		<div class="control-group">
 			<label class="control-label" for="labelModel">Model:</label>
@@ -9,18 +11,21 @@
 			</div>
 			<label class="control-label" for="labelBrand">Brand:</label>
 			<div class="controls">
-				<input type="text" id="inputBrand" ng-model="car.brandId" />
+				<select ng-model="car.brand.id"
+					data-ng-options="brand.id as brand.name for brand in brands"></select>
 			</div>
 			<label class="control-label" for="labelPrice">Price:</label>
 			<div class="controls">
-				<input type="text" id="inputPrice" ng-model="car.priceId" />
+				<select ng-model="car.price.id"
+					data-ng-options="price.id as price.price for price in prices"></select>
 			</div>
+
 		</div>
-		<div class="control-group" style="margin: 20px 0 0 0 ;">
+		<div class="control-group" style="margin: 20px 0 0 0;">
 			<div class="controls">
 				<a ng-click="listCars()" class="btn btn-small btn-primary">Cancel</a>
 				<a ng-click="addCar()" class="btn btn-small btn-primary">Create
-					new car</a> 
+					new car</a>
 			</div>
 		</div>
 	</form>

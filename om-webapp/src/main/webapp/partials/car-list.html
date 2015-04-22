@@ -20,8 +20,8 @@
 		<tr>
 			<th>Id</th>
 			<th>Model</th>
-			<th>Brand Id</th>
-			<th>Price Id</th>
+			<th>Brand</th>
+			<th>Price</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
@@ -29,8 +29,8 @@
 			ng-click="showSelectedElement(c)">
 			<td>{{c.id}}</td>
 			<td>{{c.model}}</td>
-			<td>{{c.brandId}}</td>
-			<td>{{c.priceId}}</td>
+			<td>{{c.brandDTO.name}}</td>
+			<td>{{c.priceDTO.price}} &euro;</td>
 			<td><a ng-click="updateExistingCar($index)"
 				class="btn btn-small btn-primary">edit</a></td>
 			<td><a ng-click="deleteCar(c.id, $index)"

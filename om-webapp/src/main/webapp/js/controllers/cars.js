@@ -4,11 +4,13 @@ console.log('init cars');
 
 angular.module('carApp').controller(
 		'CarListCtrl',
-		function($scope, $log, $route, $location, dataFactory, sharedProperties) {
+		function($scope, $log, $route, $location, $controller, dataFactory, sharedProperties) {
 			console.log('init CarCtrl');
 
 			$scope.car = null;
 			$scope.cars = [];
+			$scope.brands = [];
+			$scope.prices = [];
 
 			// navigation
 			$scope.reloadPage = function() {
@@ -36,12 +38,14 @@ angular.module('carApp').controller(
 			$scope.addCar = function() {
 				var car = {
 					model : $scope.car.model,
-					brandId : $scope.car.brandId,
-					priceId : $scope.car.priceId
+					brand : $scope.car.brand,
+					price : $scope.car.price
 				};
-				$scope.cars.push(car);
-				$scope.insertCar(car);
-				$scope.listCars();
+				console.log(car.brand);
+				console.log(car.price);
+//				$scope.cars.push(car);
+//				$scope.insertCar(car);
+//				$scope.listCars();
 			}
 
 			$scope.insertCar = function(data) {
@@ -117,4 +121,31 @@ angular.module('carApp').controller(
 						});
 			}
 			$scope.getCars();
+			
+			// list brands TODO: inject brands controller, call getBrands()
+			$scope.getBrands = function() {
+				dataFactory.getBrands().success(function(data) {
+					$scope.brands = data;
+					console.log(data)
+				}).error(
+						function(error) {
+							$scope.status = 'Unable to load brand data: '
+									+ error.message;
+						});
+			}
+			$scope.getBrands();
+			
+			// list prices
+			$scope.getPrices = function() {
+				dataFactory.getPrices().success(function(data) {
+					$scope.prices = data;
+					console.log(data)
+				}).error(
+						function(error) {
+							$scope.status = 'Unable to load price data: '
+									+ error.message;
+						});
+			}
+			$scope.getPrices();
+			
 		});

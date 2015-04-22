@@ -40,8 +40,8 @@ public class CarEntity extends AbstractEntity {
 		CarDTO dTO = new CarDTO();
 		dTO.setId(getId());
 		dTO.setModel(getModel());
-		dTO.setBrandId(getBrand().getId());
-		dTO.setPriceId(getPrice().getId());
+		dTO.setBrandDTO(getBrand().toDTO());
+		dTO.setPriceDTO(getPrice().toDTO());
 
 		return dTO;
 	}

@@ -7,8 +7,8 @@ public class CarDTO {
 
 	private Long id;
 	private String model;
-	private Long brandId;
-	private Long priceId;
+	private BrandDTO brandDTO;
+	private PriceDTO priceDTO;
 
 	public CarDTO() {
 	}
@@ -29,19 +29,19 @@ public class CarDTO {
 		this.model = model;
 	}
 
-	public Long getBrandId() {
-		return brandId;
+	public BrandDTO getBrandDTO() {
+		return brandDTO;
 	}
 
-	public void setBrandId(Long brandId) {
-		this.brandId = brandId;
+	public void setBrandDTO(BrandDTO brandDTO) {
+		this.brandDTO = brandDTO;
 	}
 
-	public Long getPriceId() {
-		return priceId;
+	public PriceDTO getPriceDTO() {
+		return priceDTO;
 	}
 
-	public void setPriceId(Long priceId) {
-		this.priceId = priceId;
+	public void setPriceDTO(PriceDTO priceDTO) {
+		this.priceDTO = priceDTO;
 	}
 }
