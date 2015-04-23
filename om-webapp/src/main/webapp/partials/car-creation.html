@@ -1,31 +1,51 @@
 <div class="container">
 	<h1>Car Creation</h1>
-	<p>
-		Show index: <b>{{index}}</b>
-	</p>
-	<form novalidate="novalidate" class="form-horizontal">
+	<form name="carCreationForm" novalidate="novalidate"
+		class="form-horizontal">
 		<div class="control-group">
 			<label class="control-label" for="labelModel">Model:</label>
 			<div class="controls">
-				<input type="text" id="inputModel" ng-model="car.model" />
+				<div role="alert">
+					<input type="text" id="inputModel" name="inputModel"
+						ng-model="car.model" ng-minlength="3" required /> <span
+						ng-show="carCreationForm.inputModel.$invalid">*</span> <span
+						style="color: red"
+						ng-show="carCreationForm.inputModel.$dirty && carCreationForm.inputModel.$invalid">
+						<span ng-show="carCreationForm.inputModel.$error.required">Model
+							is required.</span> <span
+						ng-show="carCreationForm.inputModel.$error.minlength">Model
+							is too short.</span>
+					</span>
+				</div>
 			</div>
 			<label class="control-label" for="labelBrand">Brand:</label>
 			<div class="controls">
-				<select ng-model="car.brand.id"
-					data-ng-options="brand.id as brand.name for brand in brands"></select>
+				<div role="alert">
+					<select name="selectBrand" ng-model="car.brand.id"
+						data-ng-options="brand.id as brand.name for brand in brands"
+						required></select> <span
+						ng-show="carCreationForm.selectBrand.$invalid"> <span
+						ng-show="carCreationForm.selectBrand.$error.required">*</span>
+					</span>
+				</div>
 			</div>
 			<label class="control-label" for="labelPrice">Price:</label>
 			<div class="controls">
-				<select ng-model="car.price.id"
-					data-ng-options="price.id as price.price for price in prices"></select>
+				<div role="alert">
+					<select name="selectPrice" ng-model="car.price.id"
+						data-ng-options="price.id as price.price for price in prices"
+						required></select> <span
+						ng-show="carCreationForm.selectPrice.$invalid"> <span
+						ng-show="carCreationForm.selectPrice.$error.required">*</span>
+					</span>
+				</div>
 			</div>
-
 		</div>
 		<div class="control-group" style="margin: 20px 0 0 0;">
 			<div class="controls">
 				<a ng-click="listCars()" class="btn btn-small btn-primary">Cancel</a>
-				<a ng-click="addCar()" class="btn btn-small btn-primary">Create
-					new car</a>
+				<a ng-click="addCar(carCreationForm.$valid)"
+					class="btn btn-small btn-primary">Create new car</a>
 			</div>
 		</div>
 	</form>

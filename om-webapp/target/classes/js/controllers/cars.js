@@ -4,10 +4,12 @@ console.log('init cars');
 
 angular.module('carApp').controller(
 		'CarListCtrl',
-		function($scope, $log, $route, $location, $controller, dataFactory, sharedProperties) {
+		function($scope, $log, $route, $location, $controller, dataFactory,
+				sharedProperties) {
 			console.log('init CarCtrl');
 
 			$scope.car = null;
+			$scope.model = null;
 			$scope.cars = [];
 			$scope.brands = [];
 			$scope.prices = [];
@@ -22,10 +24,10 @@ angular.module('carApp').controller(
 			};
 
 			$scope.updateExistingCar = function($index) {
-				sharedProperties.setIndex($index+1);
+				sharedProperties.setIndex($index + 1);
 				$location.path('/car-detail');
 			};
-			
+
 			$scope.listCars = function() {
 				$location.path('/car-list');
 			}
@@ -35,17 +37,17 @@ angular.module('carApp').controller(
 			};
 
 			// add car
-			$scope.addCar = function() {
-				var car = {
-					model : $scope.car.model,
-					brand : $scope.car.brand,
-					price : $scope.car.price
-				};
-				console.log(car.brand);
-				console.log(car.price);
-//				$scope.cars.push(car);
-//				$scope.insertCar(car);
-//				$scope.listCars();
+			$scope.addCar = function(valid) {
+				if (valid) {
+					var car = {
+						model : $scope.car.model,
+						brandDTO : $scope.car.brand,
+						priceDTO : $scope.car.price
+					};
+					$scope.cars.push(car);
+					$scope.insertCar(car);
+					$scope.listCars();
+				}
 			}
 
 			$scope.insertCar = function(data) {
@@ -65,15 +67,17 @@ angular.module('carApp').controller(
 			}
 
 			// edit car
-			$scope.editCar = function(car) {
-				var newCar = {
+			$scope.editCar = function(car, valid) {
+				if (valid) {
+					var newCar = {
 						id : sharedProperties.getIndex(),
 						model : car.model,
 						brandId : car.brandId,
 						priceId : car.priceId
 					};
-				$scope.updateCar(newCar);
-				$scope.listCars();
+					$scope.updateCar(newCar);
+					$scope.listCars();
+				}
 			}
 
 			$scope.updateCar = function(data) {
@@ -101,7 +105,6 @@ angular.module('carApp').controller(
 				}
 				dataFactory.deleteCar(id).success(function(data) {
 					$scope.cars.splice(index, 1);
-					console.log("Delete", data, '@', index);
 				}).error(
 						function(error) {
 							$scope.status = 'Unable to delete car data: '
@@ -113,7 +116,6 @@ angular.module('carApp').controller(
 			$scope.getCars = function() {
 				dataFactory.getCars().success(function(data) {
 					$scope.cars = data;
-					console.log(data)
 				}).error(
 						function(error) {
 							$scope.status = 'Unable to load car data: '
@@ -121,12 +123,11 @@ angular.module('carApp').controller(
 						});
 			}
 			$scope.getCars();
-			
+
 			// list brands TODO: inject brands controller, call getBrands()
 			$scope.getBrands = function() {
 				dataFactory.getBrands().success(function(data) {
 					$scope.brands = data;
-					console.log(data)
 				}).error(
 						function(error) {
 							$scope.status = 'Unable to load brand data: '
@@ -134,12 +135,11 @@ angular.module('carApp').controller(
 						});
 			}
 			$scope.getBrands();
-			
+
 			// list prices
 			$scope.getPrices = function() {
 				dataFactory.getPrices().success(function(data) {
 					$scope.prices = data;
-					console.log(data)
 				}).error(
 						function(error) {
 							$scope.status = 'Unable to load price data: '
@@ -147,5 +147,5 @@ angular.module('carApp').controller(
 						});
 			}
 			$scope.getPrices();
-			
+
 		});

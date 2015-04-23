@@ -1,27 +1,50 @@
 <div class="container">
 	<h1>Car Detail</h1>
-	<p>
-		Show index: <b>{{index}}</b>
-	</p>
-	<form novalidate="novalidate" class="form-horizontal">
+	<form name="carUpdateForm" novalidate="novalidate"
+		class="form-horizontal">
 		<div class="control-group">
 			<label class="control-label" for="labelModel">Model:</label>
 			<div class="controls">
-				<input type="text" id="inputModel" ng-model="car.model" />
+				<div role="alert">
+					<input type="text" id="inputModel" name="inputModel"
+						ng-model="car.model" ng-minlength="3" required /> <span
+						ng-show="carUpdateForm.inputModel.$invalid">*</span> <span
+						style="color: red"
+						ng-show="carUpdateForm.inputModel.$dirty && carUpdateForm.inputModel.$invalid">
+						<span ng-show="carUpdateForm.inputModel.$error.required">Model
+							is required.</span> <span
+						ng-show="carUpdateForm.inputModel.$error.minlength">Model
+							is too short.</span>
+					</span>
+				</div>
 			</div>
 			<label class="control-label" for="labelBrand">Brand:</label>
 			<div class="controls">
-				<input type="text" id="inputBrand" ng-model="car.brandId" />
+				<div role="alert">
+					<select name="selectBrand" ng-model="car.brand.id"
+						data-ng-options="brand.id as brand.name for brand in brands"
+						required></select> <span
+						ng-show="carUpdateForm.selectBrand.$invalid"> <span
+						ng-show="carUpdateForm.selectBrand.$error.required">*</span>
+					</span>
+				</div>
 			</div>
 			<label class="control-label" for="labelPrice">Price:</label>
 			<div class="controls">
-				<input type="text" id="inputPrice" ng-model="car.priceId" />
+				<div role="alert">
+					<select name="selectPrice" ng-model="car.price.id"
+						data-ng-options="price.id as price.price for price in prices"
+						required></select> <span
+						ng-show="carUpdateForm.selectPrice.$invalid"> <span
+						ng-show="carUpdateForm.selectPrice.$error.required">*</span>
+					</span>
+				</div>
 			</div>
 		</div>
 		<div class="control-group" style="margin: 20px 0 0 0;">
 			<div class="controls">
 				<a ng-click="listCars()" class="btn btn-small btn-primary">Cancel</a>
-				<a ng-click="editCar(car)" class="btn btn-small btn-primary">update
+				<a ng-click="editCar(car, carUpdateForm.$valid)" class="btn btn-small btn-primary">update
 					car</a>
 			</div>
 		</div>
