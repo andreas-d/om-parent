@@ -9,7 +9,7 @@ module.exports = function(config) {
 			included : false,
 			served : true
 		}, {
-			pattern : 'src/main/webapp/app.template',
+			pattern : 'src/main/webapp/index.html',
 			watched : false,
 			included : false,
 			served : true
