@@ -5,7 +5,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/features/step_definitions"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/features"/>
         <dependent-module archiveName="om-server-impl-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/om-server-impl/om-server-impl">
             <dependency-type>uses</dependency-type>
         </dependent-module>
